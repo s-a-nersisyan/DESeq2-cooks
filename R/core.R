@@ -2069,7 +2069,7 @@ replaceOutliers <- function(object, trim=.2, cooksCutoff, minReplicates=7, which
     return(object)
   }
   if (missing(cooksCutoff)) {
-    cooksCutoff <- qf(.99, p, m - p)
+    cooksCutoff <- qf(.10, p, m - p)
   }
   idx <- which(assays(object)[["cooks"]] > cooksCutoff)
   mcols(object)$replace <- apply(assays(object)[["cooks"]], 1, function(row) any(row > cooksCutoff))
